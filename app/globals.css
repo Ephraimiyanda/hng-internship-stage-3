@@ -1,0 +1,58 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --foreground-rgb: 0, 0, 0;
+  --background-start-rgb: 214, 219, 220;
+  --background-end-rgb: 255, 255, 255;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --foreground-rgb: 255, 255, 255;
+    --background-start-rgb: 0, 0, 0;
+    --background-end-rgb: 0, 0, 0;
+  }
+}
+
+body {
+  color: rgb(var(--foreground-rgb));
+  background: linear-gradient(
+      to bottom,
+      transparent,
+      rgb(var(--background-end-rgb))
+    )
+    rgb(var(--background-start-rgb));
+}
+.react-photo-gallery--gallery>div{
+  display: grid !important;
+  grid-gap: 4px;
+  
+}
+
+@media (max-width: 575.98px) {
+  .react-photo-gallery--gallery>div { 
+     grid-template-columns: repeat(auto-fill, minmax(144px, 1fr));
+  }
+}
+@media (max-width: 768.98px) and (min-width: 576px) {
+  .react-photo-gallery--gallery>div {
+      grid-template-columns: repeat(4, 1fr);
+  }
+}
+@media (max-width: 991.98px) and (min-width: 768px) {
+  .react-photo-gallery--gallery>div {
+      grid-template-columns: repeat(5, 1fr); 
+  }
+}
+@media (max-width: 1199.98px) and (min-width: 992px) {
+  .react-photo-gallery--gallery>div {
+      grid-template-columns: repeat(6, 1fr); 
+  }
+}
+@media (min-width: 1200px) {
+  .react-photo-gallery--gallery>div {
+      grid-template-columns: repeat(7, 1fr); 
+  }
+}
