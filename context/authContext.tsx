@@ -10,18 +10,23 @@ type AuthContextType = {
   isAuthenticated: boolean;
   login: (credentials: UserCredentials) => void;
   logout: () => void;
+  error: string | null; 
 };
 
 const AuthContext = createContext<AuthContextType | undefined>(undefined);
 
 export const AuthProvider: React.FC<{ children: ReactNode }> = ({ children }) => {
   const [isAuthenticated, setIsAuthenticated] = useState(false);
+  const [error, setError] = useState<string | null>(null)
   const router = useRouter();
   useEffect(() => {
     // Check if the user is already authenticated (e.g., via local storage)
     const storedAuth = localStorage.getItem("auth");
     if (storedAuth === "true") {
       setIsAuthenticated(true);
+    }
+    if(!isAuthenticated){
+        router.push("/Access/signIn")
     }
   }, []);
 
@@ -34,6 +39,7 @@ export const AuthProvider: React.FC<{ children: ReactNode }> = ({ children }) =>
       router.push("/");
     } else {
       // Authentication failed
+      setError("Invalid username or password");
       setIsAuthenticated(false);
       localStorage.setItem("auth", "false");
       router.push("/Access/signIn");
@@ -51,7 +57,7 @@ export const AuthProvider: React.FC<{ children: ReactNode }> = ({ children }) =>
   };
 
   return (
-    <AuthContext.Provider value={{ isAuthenticated, login, logout }}>
+    <AuthContext.Provider value={{ isAuthenticated, login, logout ,error}}>
       {children}
     </AuthContext.Provider>
   );

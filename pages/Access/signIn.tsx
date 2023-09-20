@@ -6,7 +6,7 @@ import { useRouter } from "next/router"; // Import useRouter hook
 export default function SignIn() {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
-  const { login } = useAuth(); // Use the useAuth hook to access authentication functions
+  const { login,error } = useAuth(); // Use the useAuth hook to access authentication functions
   const router = useRouter(); // Use the useRouter hook to navigate
 
   const handleUsernameChange = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -21,16 +21,13 @@ export default function SignIn() {
     e.preventDefault();
     // Here, you can perform your login logic
     login({ username, password }); // Call the login function from the useAuth hook
-    // Reset the form fields
-    setUsername("");
-    setPassword("");
-    // Redirect to the index page if authentication is successful
-    router.push("/");
+    // Reset the form field
   };
 
   return (
-    <div className="flex justify-center items-center h-screen bg-white">
-      <form onSubmit={handleSubmit} className="flex flex-col gap-3">
+    <div className="flex justify-center items-center h-screen ">
+      <form onSubmit={handleSubmit}  className="flex flex-col gap-3  bg-white p-5 rounded-[15px]">
+      <div className="flex justify-center"><h1 className="w-fit text-xl font-sm">Login</h1></div>
         <div className="mb-4">
           <Input
             type="text"
@@ -39,7 +36,6 @@ export default function SignIn() {
             fullWidth
             isClearable
             label="Username"
-            errorMessage="Please enter a valid username"
             labelPlacement="outside"
           />
         </div>
@@ -49,7 +45,7 @@ export default function SignIn() {
             value={password}
             onChange={handlePasswordChange}
             fullWidth
-            errorMessage="Please enter a valid password"
+            errorMessage={error&&"please enter a valid password or email"}
             label="Password"
             labelPlacement="outside"
           />
