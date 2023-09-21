@@ -189,7 +189,7 @@ export default function Home() {
         </NavbarContent>
       </Navbar>
       <div className="px-6">
-        <p>To search for images you search based on the genre of the movie since the images are posters for the movies</p>
+        <p>To search for images you search based on the genre of the movie since the images are posters for the movies like <span className="font-semibold">Action</span> ,<span className="font-semibold">Drama</span> ,<span className="font-semibold">Animation</span> ,<span className="font-semibold">Thriller</span> e.t.c.</p>
         {photos ? (
           <SortableGallery
             items={filteredItems}
