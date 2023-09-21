@@ -30,7 +30,7 @@ export default function SignIn() {
 
   return (
     <div className="flex justify-center items-center h-screen ">
-      <form onSubmit={handleSubmit} className="flex flex-col gap-3  bg-white p-5 rounded-[15px]">
+      <form onSubmit={handleSubmit} className="flex flex-col gap-4  bg-white p-5 rounded-[15px]">
         <div className="flex justify-center">
           <h1 className="w-fit text-xl font-sm">Login</h1>
         </div>
