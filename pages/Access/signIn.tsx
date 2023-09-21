@@ -42,7 +42,6 @@ export default function SignIn() {
             fullWidth
             isClearable
             label="Username"
-            errorMessage={error}
             labelPlacement="outside"
           />
         </div>

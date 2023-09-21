@@ -87,7 +87,6 @@ export default function Home() {
       const videoData = await res.json();
       
       const genre = videoData.genres.map((genre:any) => genre.name);
-      console.log(genre);
       return genre;
     } catch (error) {
       console.error("Error fetching movie genres:", error);
@@ -156,7 +155,7 @@ export default function Home() {
         className=" flex flex-col sm:flex-row"
       >
         <NavbarBrand>
-          <p className="font-bold text-inherit text-2xl">Sortable Gallery</p>
+          <p className="font-bold text-inherit text-2xl"> Gallery</p>
         </NavbarBrand>
         <NavbarContent className=" gap-4 " justify="center">
           <NavbarItem>
@@ -170,11 +169,11 @@ export default function Home() {
               }}
               color="default"
               placeholder="search for pictures based on their tags..."
-              className="max-w-[470px] sm:w-[350px] md:w-[450px] justify-self-end sm:justify-self-center"
+              className="max-w-[470px] sm:w-[320px] md:w-[400px] justify-self-end sm:justify-self-center"
             />
           </NavbarItem>
         </NavbarContent>
-        <NavbarContent className="hidden lg:flex" justify="end">
+        <NavbarContent className="lg:flex" justify="end">
           <NavbarItem>
             <Button
               as={Link}
@@ -190,6 +189,7 @@ export default function Home() {
         </NavbarContent>
       </Navbar>
       <div className="px-6">
+        <p>To search for images you search based on the genre of the movie since the images are posters for the movies</p>
         {photos ? (
           <SortableGallery
             items={filteredItems}
