@@ -14,7 +14,7 @@ export default function MyApp({ Component, pageProps }: AppProps) {
             <Head>
               {/* Define metadata for the app */}
               <meta name="viewport" content="width=device-width, initial-scale=1" />
-              <title>My movie plug</title>
+              <title>My gallery</title>
               <link
                 rel="icon"
                 href="/icon.svg?<generated>"

@@ -16,11 +16,13 @@ import {
   Link,
   Button,
   Input,
+  
 } from "@nextui-org/react";
 import { SearchIcon } from "@/components/searchIcon";
 import { useAuth } from "../context/authContext"; 
 import { useRouter } from "next/router"; 
-
+import LogoutImg from "../public/logout-svgrepo-com.svg"
+import Image from "next/image";
 // Define the Photo type based on PhotoProps
 type Photo = {
   src: string;
@@ -178,6 +180,7 @@ export default function Home() {
         <NavbarContent className="lg:flex" justify="end">
           <NavbarItem>
             <Button
+            className="hidden sm:flex"
               as={Link}
               color="danger"
               variant="flat"
@@ -186,6 +189,24 @@ export default function Home() {
               }}
             >
               logout
+            </Button>
+            <Button
+            className="flex sm:hidden " size="sm" style={{
+              width:"30px"
+            }}
+              as={Link}
+              color="danger"
+              variant="flat"
+              onClick={() => {
+                logout();
+              }}
+            >
+              <Image
+              src={LogoutImg}
+              width={15}
+              height={15}
+              alt="logout"
+              />
             </Button>
           </NavbarItem>
         </NavbarContent>
