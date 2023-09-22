@@ -169,7 +169,9 @@ export default function Home() {
               }}
               color="default"
               placeholder="search for pictures based on their tags..."
-              className="max-w-[470px] sm:w-[320px] md:w-[400px] justify-self-end sm:justify-self-center bg-stone-300"
+              className="max-w-[470px] sm:w-[320px] md:w-[400px] justify-self-end sm:justify-self-center bg-stone-300" style={{
+                background:"rgb(214 211 209)"
+              }}
             />
           </NavbarItem>
         </NavbarContent>
