@@ -139,7 +139,7 @@ export default function Home() {
   };
 
   const filteredItems = items.filter((item) =>
-    item.genres.some((genre:any) => genre.toLowerCase().includes(searchQuery).toLowerCase())
+    item.genres.some((genre:any) => genre.toLowerCase().includes(searchQuery.toLowerCase()))
   );
 
   return (
