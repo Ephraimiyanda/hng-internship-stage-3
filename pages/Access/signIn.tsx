@@ -43,6 +43,7 @@ export default function SignIn() {
             isClearable
             label="Username"
             labelPlacement="outside"
+            className="text-black"
           />
         </div>
         <div className="mb-4">
@@ -54,6 +55,7 @@ export default function SignIn() {
             errorMessage={error}
             label="Password"
             labelPlacement="outside"
+            className="text-black"
           />
         </div>
         <div className="mb-4">
