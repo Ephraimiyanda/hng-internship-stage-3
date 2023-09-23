@@ -34,6 +34,7 @@ const Photo: React.FC<PhotoProps> = ({ index, onClick, photo, margin, direction,
 
   return (
     <Image
+
     className="max-h-[280px] max-w-[250px]  object-cover w-full float-right"
     radius="none"
     isZoomed

@@ -159,7 +159,7 @@ export default function Home() {
           display: "flex",
         }}
         maxWidth="full"
-        className=" flex flex-col sm:flex-row"
+        className=" flex flex-col sm:flex-row bg-stone-300"
       >
         <NavbarBrand>
           <p className="font-bold text-inherit text-2xl"> Gallery</p>
@@ -219,8 +219,8 @@ export default function Home() {
           </NavbarItem>
         </NavbarContent>
       </Navbar>
-      <div className="px-6">
-        <p>
+      <div className="px-6 ">
+        <p className="py-4">
           To search for images you search based on the genre of the movie since
           the images are posters for the movies like{" "}
           <span className="font-semibold">Action</span>,{" "}
