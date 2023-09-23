@@ -232,7 +232,7 @@ export default function Home() {
           filteredItems.length > 0 ? (
             <SortableGallery items={filteredItems} onSortEnd={onSortEnd} axis={"xy"} />
           ) : (
-            <div className="h-[75vh] flex flex-col justify-center items-center"> <p>No results found for the query <span className="font-bold">"{searchQuery}"</span> </p></div>
+            <div className="h-[75vh] flex flex-col justify-center items-center"> <p>No results found for the query <span className="font-bold">{`"${searchQuery}"`}</span> </p></div>
            
           )
         ) : (
