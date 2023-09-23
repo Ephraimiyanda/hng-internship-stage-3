@@ -16,13 +16,13 @@ import {
   Link,
   Button,
   Input,
-  
 } from "@nextui-org/react";
 import { SearchIcon } from "@/components/searchIcon";
-import { useAuth } from "../context/authContext"; 
-import { useRouter } from "next/router"; 
-import LogoutImg from "../public/logout-svgrepo-com.svg"
+import { useAuth } from "../context/authContext";
+import { useRouter } from "next/router";
+import LogoutImg from "../public/logout-svgrepo-com.svg";
 import Image from "next/image";
+
 // Define the Photo type based on PhotoProps
 type Photo = {
   src: string;
@@ -30,7 +30,7 @@ type Photo = {
   height: number;
   alt: string;
   title: string;
-  genres:any
+  genres: any;
 };
 
 // Define the type for your photo data
@@ -50,14 +50,20 @@ type SortableGalleryProps = {
 // Define the type for the items state
 type ItemsState = Photo[] | [];
 
-const SortablePhoto = SortableElement((item: PhotoData,index:number) => (
+const SortablePhoto = SortableElement((item: PhotoData, index: number) => (
   <div>
-    <PhotoCard index={index} photo={{
-      src: "",
-      width: 0,
-      height: 0,
-      alt: ""
-    }} margin={""} direction={""} {...item} />
+    <PhotoCard
+      index={index}
+      photo={{
+        src: "",
+        width: 0,
+        height: 0,
+        alt: "",
+      }}
+      margin={""}
+      direction={""}
+      {...item}
+    />
   </div>
 ));
 
@@ -65,10 +71,7 @@ const SortableGallery = SortableContainer<SortableGalleryProps | any>(
   ({ items }: any) => (
     <Gallery
       photos={items}
-      renderImage={(props) => (
-        <SortablePhoto 
-        {...props} />
-      )}
+      renderImage={(props) => <SortablePhoto {...props} />}
     />
   )
 );
@@ -87,8 +90,8 @@ export default function Home() {
         `https://api.themoviedb.org/3/movie/${id}?api_key=${apiKey}&language=en-US`
       );
       const videoData = await res.json();
-      
-      const genre = videoData.genres.map((genre:any) => genre.name);
+
+      const genre = videoData.genres.map((genre: any) => genre.name);
       return genre;
     } catch (error) {
       console.error("Error fetching movie genres:", error);
@@ -104,7 +107,7 @@ export default function Home() {
       );
       const photoRes = await res.json();
       const photoData = photoRes.results;
-      
+
       // Fetch genres for each movie and update the items
       const updatedItems = await Promise.all(
         photoData.map(async (data: PhotoData) => {
@@ -115,7 +118,7 @@ export default function Home() {
             height: 150,
             alt: data.title,
             title: data.title,
-            genres: genres
+            genres: genres,
           };
         })
       );
@@ -141,7 +144,9 @@ export default function Home() {
   };
 
   const filteredItems = items.filter((item) =>
-    item.genres.some((genre:any) => genre.toLowerCase().includes(searchQuery.toLowerCase()))
+    item.genres.some((genre: any) =>
+      genre.toLowerCase().includes(searchQuery.toLowerCase())
+    )
   );
 
   return (
@@ -171,8 +176,9 @@ export default function Home() {
               }}
               color="default"
               placeholder="search for pictures based on their tags..."
-              className="max-w-[470px] sm:w-[320px] md:w-[400px] justify-self-end sm:justify-self-center text-black " style={{
-                background:"rgb(214 211 209)"
+              className="max-w-[470px] sm:w-[320px] md:w-[400px] justify-self-end sm:justify-self-center text-black "
+              style={{
+                background: "rgb(214 211 209)",
               }}
             />
           </NavbarItem>
@@ -180,7 +186,7 @@ export default function Home() {
         <NavbarContent className="lg:flex" justify="end">
           <NavbarItem>
             <Button
-            className="hidden sm:flex"
+              className="hidden sm:flex"
               as={Link}
               color="danger"
               variant="flat"
@@ -191,9 +197,11 @@ export default function Home() {
               logout
             </Button>
             <Button
-            className="flex sm:hidden " size="sm" style={{
-              width:"30px"
-            }}
+              className="flex sm:hidden "
+              size="sm"
+              style={{
+                width: "30px",
+              }}
               as={Link}
               color="danger"
               variant="flat"
@@ -202,23 +210,31 @@ export default function Home() {
               }}
             >
               <Image
-              src={LogoutImg}
-              width={15}
-              height={15}
-              alt="logout"
+                src={LogoutImg}
+                width={15}
+                height={15}
+                alt="logout"
               />
             </Button>
           </NavbarItem>
         </NavbarContent>
       </Navbar>
       <div className="px-6">
-        <p>To search for images you search based on the genre of the movie since the images are posters for the movies like <span className="font-semibold">Action</span> ,<span className="font-semibold">Drama</span> ,<span className="font-semibold">Animation</span> ,<span className="font-semibold">Thriller</span> e.t.c.</p>
+        <p>
+          To search for images you search based on the genre of the movie since
+          the images are posters for the movies like{" "}
+          <span className="font-semibold">Action</span>,{" "}
+          <span className="font-semibold">Drama</span>,{" "}
+          <span className="font-semibold">Animation</span>,{" "}
+          <span className="font-semibold">Thriller</span> e.t.c.
+        </p>
         {photos ? (
-          <SortableGallery
-            items={filteredItems}
-            onSortEnd={onSortEnd} 
-            axis={"xy"}
-          />
+          filteredItems.length > 0 ? (
+            <SortableGallery items={filteredItems} onSortEnd={onSortEnd} axis={"xy"} />
+          ) : (
+            <div className="h-[75vh] flex flex-col justify-center items-center"> <p>No results found for the query <span className="font-bold">"{searchQuery}"</span> </p></div>
+           
+          )
         ) : (
           <Loader />
         )}
