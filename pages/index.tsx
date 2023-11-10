@@ -220,6 +220,7 @@ export default function Home() {
         </NavbarContent>
       </Navbar>
       <div className="px-6 ">
+        <p>This is a re-arrangable gallery. you drag and drop to re-arrange the pictures</p>
         <p className="py-4">
           To search for images you search based on the genre of the movie since
           the images are posters for the movies like{" "}
