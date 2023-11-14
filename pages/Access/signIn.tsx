@@ -34,8 +34,9 @@ export default function SignIn() {
         
         <div className="flex justify-center flex-col">
           <h1 className="w-fit text-xl font-sm">Login</h1>
-        <p>use <span className="font-semibold">user@example.com</span> and <span className="font-semibold">1Password</span> as the username and password</p>
+        
         </div>
+        <p>use <span className="font-semibold">user@example.com</span> and <span className="font-semibold">1Password</span> as the username and password</p>
         <div className="mb-4">
           <Input
             type="text"
